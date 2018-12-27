@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bejewelled</title>
+  </head>
+  <body>
+    <h1>Number-to-guess: <span id="number-to-guess"></span></h1>
+    <div id="gem"><img src="assets/images/blue_gem.png" alt="blue-gem" /></div>
+
+    <!-- // JQ -->
+
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+    ></script>
+
+    <script type="text/javascript">
+      //    <!----------------JAVASCRIPT----------------------------->
+      var counter = 0;
+      var randomNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+      var targetNum = 99;
+
+      //to get a randomly picked number within the range of 19-120
+      function getRndInteger(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
+      getRndInteger(19, 120);
+
+      //  var randomTargetNum = randomNum[Math.floor(Math.random() * 120)+ 19];getting Nan in return. why?????
+
+      //print the target number to DOM
+      $("#number-to-guess").text(targetNum);
+
+      //create an onclick event for the img
+      $("#gem").on("click", function() {
+        alert("Score: " + counter);
+        counter += getRndInteger(19, 120);
+
+        if (targetNum == counter) {
+          alert("yay! you won!");
+        } else if (counter > targetNum) {
+          alert("sorry, you lose!");
+        }
+      });
+    </script>
+  </body>
+</html>

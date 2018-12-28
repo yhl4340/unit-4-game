@@ -3,10 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <title>Bejewelled</title>
+    <style>
+    #gem >img{
+        width:100px;
+        height: 80px;
+        display: inline;
+        border:2px red solid;
+        margin: auto 10px;
+    }
+    </style>
   </head>
   <body>
     <h1>Number-to-guess: <span id="number-to-guess"></span></h1>
-    <div id="gem"><img src="assets/images/blue_gem.png" alt="blue-gem" /></div>
+    <div id="gem"></div>
+    <p id='score'>Score</p>
+    <p id='win'>Win</p>
+    <p id='loss'>lose</p>
 
     <!-- // JQ -->
 
@@ -16,33 +28,79 @@
     ></script>
 
     <script type="text/javascript">
-      //    <!----------------JAVASCRIPT----------------------------->
+    //    <!----------------JAVASCRIPT----------------------------->
       var counter = 0;
-      var randomNum = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-      var targetNum = 99;
+      var randomTargetNum;
+      var win = 0;
+      var loss = 0;
+      var score = 0;
+      var tries = 8;
 
-      //to get a randomly picked number within the range of 19-120
-      function getRndInteger(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
-      }
-      getRndInteger(19, 120);
+//  newImg.html(randomTargetNum);
 
-      //  var randomTargetNum = randomNum[Math.floor(Math.random() * 120)+ 19];getting Nan in return. why?????
+//generate a randomly picked number between 19-120.
+      randomTargetNum = Math.floor(Math.random() * 101 )+ 19;
+    
+//4 iterations. each iteration will generate randome number associated with each crystal
+      for ( var i = 0; i < 4; i++){
 
-      //print the target number to DOM
-      $("#number-to-guess").text(targetNum);
+         var randomNum = Math.floor(Math.random() * 12 )+ 1;
+         console.log(randomNum);
+         var newImg = $('<img>');
+         newImg.addClass('gem');    
 
-      //create an onclick event for the img
-      $("#gem").on("click", function() {
-        alert("Score: " + counter);
-        counter += getRndInteger(19, 120);
+//attaching img tag to the buttons w the gem class
+         $('#gem').append(newImg);
 
-        if (targetNum == counter) {
+//set data att to the gems. the data will be equal to the array value;
+         newImg.attr('data-random',randomNum);
+         newImg.attr('src','assets/images/ruby.png');
+        };
+//print the target number to DOM
+      $("#number-to-guess").text(randomTargetNum);
+
+ //create an onclick event for the img
+      $(".gem").on("click", function() {
+        score = randomNum + counter;
+        alert("new Score: " + counter);
+        counter += randomNum;
+        console.log(randomNum);
+        while ( tries) {
+
+            if (randomNum == score) {
           alert("yay! you won!");
-        } else if (counter > targetNum) {
+          win++;
+        } else if (score > randomNum) {
           alert("sorry, you lose!");
+          loss++;
+          break;
+        }
         }
       });
+      $('#score').append(score);
+      $('#win').append(win);
+      $('#loss').append(loss);
+      
+
+// <------------Pseudo code--------------------------->
+// - four crystals displayed as buttons on the page.
+// -The player will be shown a random number at the start of the game.
+
+// -When the player clicks on a crystal, it will add a specific amount of points to the player's total score. 
+
+// -Your game will hide this amount until the player clicks a crystal.
+// When they do click one, update the player's score counter.
+
+// -wins if their total score matches the random number from the beginning of the game.
+// -loses if their score goes above the random number.
+// -The game restarts whenever the player wins or loses.
+
+// -When the game begins again, the player should see a new random number. Also, all the crystals will have four new hidden values. Of course, the user's score (and score counter) will reset to zero.
+
+// -The app should show the number of games the player wins and loses. To that end, do not refresh the page as a means to restart the game.
+
+// --The random number shown at the start of the game should be between 19 - 120.
+// Each crystal should have a random hidden value between 1 - 12.
     </script>
   </body>
 </html>

@@ -1,0 +1,53 @@
+
+      .gem > img {
+        display: inline;
+        border: 2px red solid;
+        margin: auto 10px;
+      }
+      #gem img {
+        display: inline;
+        border: 2px red solid;
+        margin: auto 10px;
+      }
+      #gem {
+        margin-left:370px;
+        padding: 5px;
+      }
+      h2 {
+        border:2px dotted green;
+        height: 120px;
+        width: 350px;
+        color: #860838;
+        background: rgb(217, 211, 211);
+        margin:auto;
+        border-radius: 10px;
+      }
+      #win {
+        background: rgb(217, 211, 211);
+        border-radius: 10px;
+        width: 50px;
+        padding:5px;
+        margin-top:5px;
+        margin-right:10px;
+        overflow: clear;
+      }
+      #loss {
+        background:rgb(217, 211, 211);
+        border-radius: 10px;
+        padding:5px;
+        width:50px;
+        margin-top: 5px;
+        margin-left:10px;
+      }
+      #score {
+        border:2px solid pink;
+        background: rgb(217, 211, 211);
+        border-radius: 10px;
+        padding:8px;
+        margin:5px auto;
+      }
+      button{
+        margin-left: 660px;
+        margin:auto;
+      }
+      

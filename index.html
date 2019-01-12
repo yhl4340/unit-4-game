@@ -92,6 +92,7 @@
         //create an onclick event for the img
         $(".gem").on("click", function(event) {
           var newImgValue = parseInt($(this).attr("data-random"));
+        
 
           score += newImgValue;
           $("#score").html('Your score: ' + score);

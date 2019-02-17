@@ -17,8 +17,6 @@ $(document).ready(function() {
 
     //create a function that will run 4 iterations. each iteration will generate randome number associated with each crystal.
 
-
-
     //print the target number to DOM
     $("#number-to-guess").text(randomTargetNum);
 
